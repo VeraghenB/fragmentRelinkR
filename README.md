@@ -1,6 +1,11 @@
+<p align="center">
+  <img src="assets/logo.png" width="350" />
+</p>
+
 # fragmentRelinkR
 
 Utilities for repairing, validating, and reattaching fragment files in Signac scATAC-seq objects.
+
 
 ## Why?
 
