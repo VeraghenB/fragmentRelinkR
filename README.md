@@ -1,19 +1,35 @@
 # fragmentRelinkR
 
-This repository provides a reproducible pipeline to attach multi-sample
-ATAC-seq fragment files to a Seurat/Signac object.
+Utilities for repairing, validating, and reattaching fragment files in Signac scATAC-seq objects.
 
-## Requirements
-- Seurat
-- Signac
-- R >= 4.1
+## Why?
 
-## Usage
+Signac stores file paths to fragment files rather than embedding fragments inside Seurat objects.
+
+When a Seurat object is transferred between computers, collaborators often encounter:
+
+* Fragment file not found
+* Fragment file is not indexed
+* CoveragePlot failures
+* Broken fragment paths
+
+fragmentRelinkR provides a reproducible framework for validating and restoring fragment-file links.
+
+## Example
 
 ```r
-source("R/attach_fragments.R")
-source("R/validate_fragments.R")
+obj <- readRDS("ATAC_object.rds")
 
-MouseDRG_ATAC <- readRDS("MouseDRG_ATAC.rds")
+validate_fragments(obj, frag_map)
 
-MouseDRG_ATAC <- attach_fragments(MouseDRG_ATAC, frag_map)
+obj <- attach_fragments(
+  obj,
+  frag_map,
+  sample_column = "Sample_name"
+)
+
+CoveragePlot(
+  obj,
+  region = "Ntrk1"
+)
+```
