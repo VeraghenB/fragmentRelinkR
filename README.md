@@ -24,8 +24,7 @@ validate_fragments(obj, frag_map)
 
 obj <- attach_fragments(
   obj,
-  frag_map,
-  sample_column = "Sample_name"
+  frag_map
 )
 
 CoveragePlot(
