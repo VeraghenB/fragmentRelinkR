@@ -1,0 +1,15 @@
+.Rhistory
+.RData
+.Rproj.user/
+
+*.rds
+*.Rds
+*.RDS
+
+*.gz
+*.tbi
+
+Raw_ATAC_data/
+data/
+
+renv/
